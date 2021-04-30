@@ -167,6 +167,7 @@ class Launcher:
         self.builder = DockerImageBuilder()
         curr_time = timeit.default_timer()
         log.info(f"Build log location: {self.logdir / 'image_build.log'}")
+        time.sleep(0.01)
         self.image = self.builder.build_docker_image(dockerfile=self.args.file,
                                                      directory=str(self.location),
                                                      tag=self.image_name,
