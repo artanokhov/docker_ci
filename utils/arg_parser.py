@@ -437,7 +437,7 @@ def parse_args(name: str, description: str):  # noqa
                      'is supported only for RHEL-based images')
 
     if hasattr(args, 'product_version') and args.product_version:
-        fail_if_product_version_not_supported(args.product_version, parser)
+        #fail_if_product_version_not_supported(args.product_version, parser)
         product_version = re.search(r'^\d{4}\.\d$', args.product_version)
         if product_version:
             # save product version YYYY.U as YYYY.U.0
@@ -591,8 +591,8 @@ def parse_args(name: str, description: str):  # noqa
         latest_public_version = '2022.2.0' if latest_public_version <= '2022.2.0' else latest_public_version
         args.wheels_version = args.product_version if hasattr(args, 'product_version') else latest_public_version
 
-    if hasattr(args, 'product_version'):
-        fail_if_product_version_not_supported(args.product_version, parser)
+    #if hasattr(args, 'product_version'):
+    #    fail_if_product_version_not_supported(args.product_version, parser)
 
     if hasattr(args, 'distribution') and args.distribution == 'custom':
         if subprocess.call(['docker', 'run', '--rm', args.tags[0], 'ls', 'extras/opencv'],  # nosec
