@@ -22,7 +22,7 @@ RUN rm -rf ${INTEL_OPENVINO_DIR}/.distribution && mkdir ${INTEL_OPENVINO_DIR}/.d
     touch ${INTEL_OPENVINO_DIR}/.distribution/docker
 # -----------------
 
-{% if distribution == 'dev' %}
+{% if distribution in ['dev', 'genai', 'genai_scoring'] %}
 
 FROM base AS opencv
 
