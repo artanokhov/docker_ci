@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends cmake make git 
     else \
         ${PYTHON_VER} -m pip install --no-cache-dir --pre openvino=="$OPENVINO_WHEELS_VERSION" --trusted-host=* --find-links "$OPENVINO_WHEELS_URL" && \
         ${PYTHON_VER} -m pip install --no-cache-dir --pre openvino_dev[caffe,kaldi,mxnet,onnx,pytorch,tensorflow2]=="$OPENVINO_WHEELS_VERSION" --trusted-host=* --find-links "$OPENVINO_WHEELS_URL" --extra-index-url https://download.pytorch.org/whl/cpu && \
-        ${PYTHON_VER} -m pip install --no-cache-dir --pre openvino_tokenizers && \
-        ${PYTHON_VER} -m pip install --no-cache-dir --pre openvino_genai; \
+        ${PYTHON_VER} -m pip install --no-cache-dir --pre openvino_tokenizers --find-links "$OPENVINO_WHEELS_URL" && \
+        ${PYTHON_VER} -m pip install --no-cache-dir --pre openvino_genai --find-links "$OPENVINO_WHEELS_URL"; \
     fi
 
 WORKDIR ${INTEL_OPENVINO_DIR}/licensing

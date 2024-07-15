@@ -227,7 +227,7 @@ class DockerCIArgumentParser(argparse.ArgumentParser):
         parser.add_argument(
             '-dist',
             '--distribution',
-            choices=['base', 'runtime', 'dev', 'dev_no_samples', 'custom'],
+            choices=['base', 'runtime', 'dev', 'dev_no_samples', 'custom', 'genai', 'genai_scoring'],
             required=' test' in parser.prog,
             help='Distribution type: dev, dev_no_samples, runtime or '
                  'base (with CPU only and without installing dependencies). '
