@@ -1,12 +1,11 @@
 # install product by copying archive content
 
-# Creating user openvino and adding it to groups"users"
-RUN useradd -ms /bin/bash -G users openvino
-
 {% if 'autobuild' != rhel_platform %}
 ARG TEMP_DIR=/tmp/openvino_installer
 {% endif -%}
 ENV INTEL_OPENVINO_DIR /opt/intel/openvino
+
+RUN useradd -ms /bin/bash -G users openvino
 
 {% if 'openshift' == rhel_platform %}
 WORKDIR ${TEMP_DIR}

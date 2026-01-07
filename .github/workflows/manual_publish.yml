@@ -34,7 +34,7 @@ jobs:
   manual_publish:
     strategy:
       matrix:
-        os: [ ubuntu-20.04, windows-docker ]
+        os: [ ubuntu-24.04, windows-docker ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Code checkout

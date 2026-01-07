@@ -2,7 +2,6 @@
 ARG TEMP_DIR=/tmp/openvino_installer
 ENV INTEL_OPENVINO_DIR=/opt/intel/openvino
 
-# Creating user openvino and adding it to groups"users"
 RUN useradd -ms /bin/bash -G users openvino
 
 RUN find "${TEMP_DIR}" \( -name "*.tgz" -o -name "*.tar.gz" \) -exec tar -xzf {} \; && \

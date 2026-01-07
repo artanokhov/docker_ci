@@ -12,7 +12,7 @@ permissions: read-all
 
 jobs:
   update_dockerfiles:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Code checkout
         uses: actions/checkout@v2
