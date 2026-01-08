@@ -27,7 +27,7 @@ RUN rm -rf ${INTEL_OPENVINO_DIR}/.distribution && mkdir -p ${INTEL_OPENVINO_DIR}
 
 # adding user openvino to group "render" to use GPU and NPU
 RUN sed -ri -e 's@^UMASK[[:space:]]+[[:digit:]]+@UMASK 000@g' /etc/login.defs && \
-	grep -E "^UMASK" /etc/login.defs && groupadd render && usermod -a -G render openvino && \
+	grep -E "^UMASK" /etc/login.defs && groupadd -f render && usermod -a -G render openvino && \
     chown openvino -R /home/openvino
 
 WORKDIR /thirdparty

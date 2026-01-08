@@ -27,8 +27,6 @@ ENV INTEL_OPENVINO_DIR /opt/intel/openvino
 RUN rm -rf ${INTEL_OPENVINO_DIR}/.distribution && mkdir -p ${INTEL_OPENVINO_DIR}/.distribution && \
     touch ${INTEL_OPENVINO_DIR}/.distribution/docker
 
-{% if 'docker' == rhel_platform %}
-# -----------------
 FROM registry.access.redhat.com/ubi8 AS ov_base
 
 LABEL name="rhel8_{{ distribution }}" \
@@ -44,11 +42,10 @@ USER root
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
-{% endif %}
 
 # adding user openvino to group "render" to use GPU and NPU
 RUN sed -ri -e 's@^UMASK[[:space:]]+[[:digit:]]+@UMASK 000@g' /etc/login.defs && \
-	grep -E "^UMASK" /etc/login.defs && groupadd render && usermod -a -G render openvino && \
+	grep -E "^UMASK" /etc/login.defs && groupadd -f render && usermod -a -G render openvino && \
     chown openvino -R /home/openvino
 
 {% if 'runtime' == distribution %}
